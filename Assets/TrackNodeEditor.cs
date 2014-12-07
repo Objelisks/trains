@@ -13,5 +13,7 @@ public class TrackNodeEditor : Editor {
       Vector3 p2 = node.transform.position;
       Handles.DrawLine(p1, p2);
     }
+
+    thing.arc.Draw();
   }
 }

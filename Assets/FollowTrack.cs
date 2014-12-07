@@ -20,7 +20,6 @@ public class FollowTrack : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-    Debug.Log("update");
     if(currentNode == null) return;
 
     nodePos += speed;
@@ -32,7 +31,6 @@ public class FollowTrack : MonoBehaviour {
       currentNode = currentNode.GetPrevious(speed);
       nodePos += 1.0f;
     }
-    Debug.Log("moove");
     transform.position = currentNode.GetPositionAlong(nodePos);
   }
 }
