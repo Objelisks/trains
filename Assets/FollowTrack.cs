@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public enum TrainDirection {
   Forward,
@@ -8,8 +7,8 @@ public enum TrainDirection {
 
 public class FollowTrack : MonoBehaviour {
 
-  public TrackNode currentNode = null;
-  public float speed = 0.0f;
+  public TrackNode currentNode;
+  public float speed;
   float nodePos = 0.5f;
   TrainDirection direction = TrainDirection.Forward;
 

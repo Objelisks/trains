@@ -1,20 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class TrackNode : MonoBehaviour {
 
-  public Transform start;
-  public Transform finish;
-  public Transform startControl;
-  public Transform finishControl;
   public TrackNode[] connected;
-  Vector3[] segments;
 
   Arc arc;
+  public Arc Arc { get; set; }
 
   // Use this for initialization
   void Start () {
-    arc = new Arc(start, startControl, finishControl, finish);
+    arc = (Arc)GetComponent("Arc");
   }
 
   // Update is called once per frame
@@ -27,10 +22,11 @@ public class TrackNode : MonoBehaviour {
   }
 
   public TrackNode GetPrevious(float speed) {
-    return connected[0];
+    return connected[1];
   }
 
   public Vector3 GetPositionAlong(float percent) {
-    return new Vector3();
+    return arc.GetPointAt(percent);
   }
+
 }

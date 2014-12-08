@@ -1,3 +1,9 @@
 *.meta
 Library
 Temp
+Build
+*.sublime*
+*.userprefs
+*.csproj
+*.unityproj
+*.sln
