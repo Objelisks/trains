@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FirstPersonControl : MonoBehaviour {
+public class FirstPersonControlScript : MonoBehaviour {
 							// The transform used for camera rotatio
 
 	private Transform thisTransform;
