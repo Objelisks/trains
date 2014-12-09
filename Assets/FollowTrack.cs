@@ -1,16 +1,11 @@
 ﻿using UnityEngine;
 
-public enum TrainDirection {
-  Forward,
-  Backward
-}
-
 public class FollowTrack : MonoBehaviour {
 
-  public TrackNode currentNode;
+  public Arc track;
   public float speed;
-  float nodePos = 0.5f;
-  TrainDirection direction = TrainDirection.Forward;
+  bool orientationSwitched;
+  public float trackPos;
 
   // Use this for initialization
   void Start () {
@@ -19,17 +14,11 @@ public class FollowTrack : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-    if(currentNode == null) return;
+    if(track == null) return;
 
-    nodePos += speed;
-    if(nodePos > 1.0f) {
-      currentNode = currentNode.GetNext(speed);
-      nodePos -= 1.0f;
-    }
-    if(nodePos < 0.0f) {
-      currentNode = currentNode.GetPrevious(speed);
-      nodePos += 1.0f;
-    }
-    transform.position = currentNode.GetPositionAlong(nodePos);
+    trackPos += speed * (orientationSwitched ? 1.0f : -1.0f);
+    Vector3 newPos = Arc.MoveAlongTrack(ref track, ref trackPos, ref orientationSwitched, true);
+    transform.position = track.transform.TransformPoint(newPos);
+    Debug.Log(transform.position);
   }
 }
